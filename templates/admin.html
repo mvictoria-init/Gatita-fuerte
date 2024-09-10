@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- imagen ico -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='kitty.ico') }}" type="image/x-icon">
+  <!-- link para usar los estilos css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <!-- link para usar los iconos de bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- link para usar letras de google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
+  <title>{{titulo}}</title>
+</head>
+<body>
+  
+  <div class="titulo">
+    <img src="{{ url_for('static', filename='kittymamadisima.jpg') }}" alt="Kitty mamadisima">
+    <h1 class="letra">{{titulo}}<i class="bi bi-award-fill"></i></h1>
+
+    <form action="/actualizarprecio" method="POST">
+      {{precio.csrf_token}}
+      {{precio.mensual.label(class='linletras')}}
+      {{precio.mensual(class='cajitas')}}
+      {{precio.trimestral.label(class='linletras')}}
+      {{precio.trimestral(class='cajitas')}}
+      {{precio.anual.label(class='linletras')}}
+      {{precio.anual(class='cajitas')}}
+      {{precio.enviar(class="botonsito")}}
+    </form>
+
+    <div class='salir'><a href="/"><i class="bi bi-box-arrow-right"></i></a></div>
+
+  </div>
+
+  <div class="contenedor">
+
+    <div class="contenedor1">
+        <form action="/guardar" method="POST">
+          {{forma.csrf_token}}
+
+          {{forma.id}}
+
+            <div class="alinear">
+                {{forma.cedula.label}}
+                {{forma.cedula(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.nombre.label}}
+                {{forma.nombre(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.apellido.label}}
+                {{forma.apellido(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.cumpleaños.label}}
+                {{forma.cumpleaños(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.nombreapp.label}}
+                {{forma.nombreapp(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.contraseña.label}}
+                {{forma.contraseña(class="formu")}}
+            </div>
+
+            <div class="alinear">
+                {{forma.administrador.label}}
+                {{forma.administrador(class="boton")}}
+            </div> 
+
+            {{forma.enviar(class="boton")}}
+            
+        </form>
+    </div>
+
+    <div class="contenedor2"> 
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Cédula</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Nombre De Usuario</th>
+              <th>Contraseña</th>
+              <th>Administrador</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario.id}}</td>
+                    <td>{{usuario.cedula}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.cumpleaños}}</td>
+                    <td>{{usuario.nombreapp}}</td>
+                    <td>{{usuario.contraseña}}</td>
+                    <td>{{usuario.administrador}}</td>
+                    <td>
+                        <div class="contenedor3">
+                            <div class="botones" id="editar">
+                            <a href="/editar/{{usuario.id}}"><i class='bi bi-pencil'></i></a>
+                            </div>
+                            <div class="botones" id="eliminar">
+                            <a href="/eliminar/{{usuario.id}}"><i class='bi bi-trash3'></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+  </div>
+
+</body>
+</html>

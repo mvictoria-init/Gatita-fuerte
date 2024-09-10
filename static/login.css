@@ -1,0 +1,56 @@
+body{
+    background: rgb(190, 109, 123);
+    margin: 20px;
+}
+
+.contenedor{
+    background: black;
+    width: 37%;
+    margin: auto;
+    border-radius: 30px;
+    color:rgb(190, 109, 123);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    width: 30%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.boton{
+    display: block;
+    margin: 0 auto;
+    background: rgb(190, 109, 123);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-family: "Nerko One", sans-serif;
+}
+
+.formu{
+    margin: 20px;
+    background: rgb(190, 109, 123);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.letra{
+    color: white;
+    font-family: "Nerko One", sans-serif;
+    letter-spacing: 2px
+}
+
+.error{
+    width: 100%;
+    background: red;
+    color: black;
+    text-align: center;
+}

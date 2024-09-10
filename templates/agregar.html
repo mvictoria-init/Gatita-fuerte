@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- imagen ico -->
+   <link rel="shortcut icon" href="{{ url_for('static', filename='kitty.ico') }}" type="image/x-icon">
+  <!-- link para usar los estilos css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='cliente.css') }}">
+  <!-- link para usar los iconos de bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- link para usar letras de google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
+  <title>{{titulo}}</title>
+</head>
+<body>
+
+  <div class="titulo">
+    <img src="{{ url_for('static', filename='kittymamadisima.jpg') }}" alt="Kitty mamadisima">
+    <h1 class="letra">{{titulo}}<i class="bi bi-award-fill"></i></h1>
+  </div>
+
+  <div class="menu">
+    <div class='buton'><a href="/"><i class="bi bi-box-arrow-right"></i></a></div>
+  </div>
+
+  <div class="contenedor4">
+    <form action="/guardarcliente" method="POST">
+      {{cliente.csrf_token}}
+
+      {{cliente.id}}
+      {{cliente.cedula.label}}
+      {{cliente.cedula(class="formu")}}
+      {{cliente.nombre.label}}
+      {{cliente.nombre(class="formu")}}
+      <br>
+      {{cliente.apellido.label}}
+      {{cliente.apellido(class="formu")}}
+      {{cliente.cumpleaños.label}}
+      {{cliente.cumpleaños(class="formu")}}
+      <br>
+      {{cliente.membresia.label}}
+      {{cliente.membresia(class="formu")}}
+      {{cliente.tipo_membresia.label}}
+      {{cliente.tipo_membresia(class="formu")}}
+      <br>
+      {{cliente.fecha_suscripcion.label}}
+      {{cliente.fecha_suscripcion(class="formu")}}
+      <br>
+      {{cliente.enviar(class="boton")}}
+    </form>
+  </div>
+
+
+
+</body>
+</html>
