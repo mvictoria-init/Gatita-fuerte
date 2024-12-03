@@ -1,3 +1,4 @@
+from utils import calcular_edad, calcular_prox_pago
 class Cliente:
     def __init__(self, id=None, cedula=None, nombre=None, apellido=None, cumpleaños=None, 
                 membresia=None, tipo_membresia=None, fecha_suscripcion=None):
@@ -9,6 +10,8 @@ class Cliente:
         self.membresia = membresia
         self.tipo_membresia = tipo_membresia
         self.fecha_suscripcion = fecha_suscripcion
+        self.edad = calcular_edad(cumpleaños)
+        self.proximo_pago = calcular_prox_pago(tipo_membresia, fecha_suscripcion)
 
     
     def __str__(self):

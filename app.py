@@ -1,12 +1,15 @@
 from flask import Flask, render_template, redirect, url_for
 
+
 from usuario import Usuario
 from usuario_dao import UsuarioDao
 from precios import Precios
 from precios_dao import PreciosDao
 from cliente import Cliente
 from cliente_dao import ClienteDAO
-from forms import UsuarioForm, LoginForm, PreciosForm, MostrarForm, ClienteForm
+from forms import UsuarioForm, LoginForm, PreciosForm, ClienteForm
+
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -67,7 +70,7 @@ def clientes():
     
    # precios
     precio = PreciosDao.mostrar_precios()
-    precio_forma = MostrarForm(obj=precio)
+    precio_forma = PreciosForm(obj=precio)
     
     # clientes
     clientes_db = ClienteDAO.seleccionar()

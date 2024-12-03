@@ -1,6 +1,9 @@
 from flask_wtf import FlaskForm
+from flask_wtf.form import _Auto
 from wtforms import StringField, SubmitField, IntegerField, SelectField, DateField, PasswordField, BooleanField, HiddenField
 from wtforms.validators import data_required
+
+from utils import calcular_edad
 
 class UsuarioForm(FlaskForm):
     id = HiddenField('id')
@@ -24,11 +27,6 @@ class PreciosForm(FlaskForm):
     anual = IntegerField('Anual', validators=[data_required()])
     enviar = SubmitField('Enviar')
 
-class MostrarForm(FlaskForm):
-    mensual = IntegerField('Mensual:', render_kw={'readonly': True})
-    trimestral = IntegerField('Trimestral:', render_kw={'readonly': True})
-    anual = IntegerField('Anual', render_kw={'readonly': True})
-
 class ClienteForm(FlaskForm):
     id = HiddenField('id')
     cedula = IntegerField('Cédula', validators=[data_required()])
@@ -41,14 +39,5 @@ class ClienteForm(FlaskForm):
     fecha_suscripcion =  DateField('Fecha de Suscripción', format='%Y-%m-%d', validators=[data_required()])
     enviar = SubmitField('Enviar')
     
-class ClienteEditForm(FlaskForm):
-    id = HiddenField('id')
-    cedula = IntegerField('Cédula', validators=[data_required()])
-    nombre = StringField('Nombre', validators=[data_required()])
-    apellido = StringField('Apellido', validators=[data_required()])
-    cumpleaños = DateField('Fecha de Nacimiento', format='%Y-%m-%d', validators=[data_required()])
-    membresia = IntegerField('Membresía', validators=[data_required()])
-    tipo_membresia = SelectField('Tipo de Membresía', choices=[('mensual', 'Mensual'), 
-                                                            ('trimestral', 'Trimestral'), ('anual', 'Anual')])
-    fecha_suscripcion =  DateField('Fecha de Suscripción', format='%Y-%m-%d', validators=[data_required()])
-    enviar = SubmitField('Enviar')
+    
+    

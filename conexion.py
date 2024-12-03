@@ -1,29 +1,25 @@
 from mysql.connector import pooling
 from mysql.connector import Error
+from decouple import config
 
 
 class Conexion:
-    DATABASE = 'kitty-stronger'
-    USERNAME = 'root'
-    PASSWORD = 'lolita28*27'
-    DB_PORT = '3306'
-    HOST = 'localhost'
-    POOL_SIZE = 5
-    POOL_NAME = 'kitty-stronger-pool'
+
     pool = None
 
     @classmethod
     def obtener_pool(cls):
         if cls.pool is None:  # Se crea el objeto pool
+            print(config('POOL_NAME'))
             try:
                 cls.pool = pooling.MySQLConnectionPool(
-                    pool_name=cls.POOL_NAME,
-                    pool_size=cls.POOL_SIZE,
-                    host=cls.HOST,
-                    port=cls.DB_PORT,
-                    database=cls.DATABASE,
-                    user=cls.USERNAME,
-                    password=cls.PASSWORD
+                    pool_name=config('POOL_NAME'),
+                    pool_size=int(config('POOL_SIZE')),
+                    host=config('HOST'),
+                    port=int(config('DB_PORT')),
+                    database=config('DATABASE'),
+                    user=config('USERNAME'),
+                    password=config('PASSWORD')
                 )
                 #print(f'Nombre del pool: {cls.pool.pool_name}')
                 #print(f'Tamanio del pool: {cls.pool.pool_size}')

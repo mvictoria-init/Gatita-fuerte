@@ -12,6 +12,9 @@
 
 5. instalar flask-wtf para manejar formularios se debe instalar la extencion WTForms
     python -m pip install flask-wtf
+
+6. Para trabajar con login en flask
+    pip install flask-login
     
 # Establece la variable de entorno FLASK_APP para indicar el archivo de tu aplicación
 set FLASK_APP=app.py  # Reemplaza "app.py" con el nombre de tu archivo principal si es diferente
